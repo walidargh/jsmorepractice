@@ -13,20 +13,13 @@ function askIfGreaterThan(el1, el2, callback) {
 
 function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop){
   if(i < arr.length - 1){
-    var left = arr.slice(0,i);
-    var bubble = arr.slice(i, i+2);
-    var right = arr.slice (i+2);
-
-    console.log(left + "(" + bubble + ")" + right);
-
-    askIfGreaterThan(arr[i], arr[i+1], function(isGreaterThan){
-      if(isGreaterThan){
+    askIfGreaterThan(arr[i], arr[i+1], function(response){
+      if(response){
         var el1 = arr[i];
         arr[i] = arr[i + 1];
         arr[i + 1] = el1;
         madeAnySwaps = true;
       }
-
       innerBubbleSortLoop(arr, i + 1, madeAnySwaps, outerBubbleSortLoop);
     });
   }
@@ -49,7 +42,7 @@ function absurdBubbleSort(arr, sortCompletionCallback) {
   outerBubbleSortLoop(true);
 }
 
-// testing
+testing
 absurdBubbleSort([3, 2, 1], function (arr) {
   console.log("Sorted array: " + JSON.stringify(arr));
   reader.close();
